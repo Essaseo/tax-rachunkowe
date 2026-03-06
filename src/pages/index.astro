@@ -12,350 +12,253 @@ const posts = allPosts
   description="TAX Biuro Rachunkowe Sp. z o.o. – kompleksowa obsługa księgowa, kadry i płace, doradztwo podatkowe. Bydgoszcz. NIP: 967-145-10-13"
 >
 
-<!-- ═══ TICKER ═══ -->
-<div id="ticker" style="margin-top:0;padding-top:80px">
-  <div class="ticker-container">
-    <div class="ticker-inner" id="tickerInner">
-      <span class="ticker-item">Pełna księgowość</span>
-      <span class="ticker-item">Kadry i płace</span>
-      <span class="ticker-item">Doradztwo podatkowe</span>
-      <span class="ticker-item">Rozliczenia VAT</span>
-      <span class="ticker-item">JPK i deklaracje</span>
-      <span class="ticker-item">Zakładanie spółek</span>
-      <span class="ticker-item">Optymalizacja podatkowa</span>
-      <span class="ticker-item">Obsługa ZUS</span>
-      <span class="ticker-item">KPiR i ryczałt</span>
-      <span class="ticker-item">Pełna księgowość</span>
-      <span class="ticker-item">Kadry i płace</span>
-      <span class="ticker-item">Doradztwo podatkowe</span>
-      <span class="ticker-item">Rozliczenia VAT</span>
-      <span class="ticker-item">JPK i deklaracje</span>
-      <span class="ticker-item">Zakładanie spółek</span>
-      <span class="ticker-item">Optymalizacja podatkowa</span>
-      <span class="ticker-item">Obsługa ZUS</span>
-      <span class="ticker-item">KPiR i ryczałt</span>
-    </div>
+<!-- TICKER -->
+<div id="ticker" style="padding-top:0;position:relative;z-index:6;margin-top:calc(80px + 0px)">
+  <div class="ticker-track">
+    {["Pełna księgowość","Kadry i płace","Doradztwo podatkowe","Rozliczenia VAT","JPK i deklaracje","Zakładanie spółek","Optymalizacja podatkowa","Obsługa ZUS","KPiR i ryczałt","Pełna księgowość","Kadry i płace","Doradztwo podatkowe","Rozliczenia VAT","JPK i deklaracje","Zakładanie spółek","Optymalizacja podatkowa","Obsługa ZUS","KPiR i ryczałt"].map(item => (
+      <span class="ticker-item">{item}<span class="ticker-sep">◆</span></span>
+    ))}
   </div>
 </div>
 
-<!-- ═══ HERO ═══ -->
+<!-- HERO -->
 <section id="hero">
-  <div class="hero-left hero-parallax-bg">
-    <div class="hero-label fade-up">
-      <span>Biuro Rachunkowe · Bydgoszcz</span>
-    </div>
-    <h1 class="fade-up delay-1">
-      Księgowość,<br/>
-      której możesz<br/>
-      <em>zaufać</em>
-    </h1>
-    <p class="fade-up delay-2">
-      <span id="typingText"></span>
-    </p>
-    <div class="hero-actions fade-up delay-3">
-      <a href="#kontakt" class="btn-primary btn-magnetic">Bezpłatna wycena →</a>
-      <a href="#uslugi" class="btn-outline-light btn-magnetic">Nasze usługi</a>
-    </div>
+  <div class="hero-canvas">
+    <div class="hero-gradient"></div>
+    <div class="hero-grid-lines"></div>
+    <div class="hero-noise"></div>
+    <canvas id="heroCanvas" style="position:absolute;inset:0;pointer-events:none;z-index:1"></canvas>
   </div>
 
-  <div class="hero-right">
-    <p class="hero-stats-title" data-reveal>Nasze biuro w liczbach</p>
-    <div class="hero-stat" data-reveal data-delay="1">
-      <div class="stat-num">
-        <span data-count="15" data-suffix="+">15+</span>
+  <div class="hero-inner">
+    <div class="hero-left-col">
+      <div class="hero-eyebrow fade-up">
+        <div class="hero-eyebrow-line"></div>
+        <span>Biuro Rachunkowe · Bydgoszcz</span>
       </div>
-      <div class="stat-desc">
-        <strong>Lat doświadczenia</strong>
-        <span>Na rynku usług księgowych</span>
-      </div>
-    </div>
-    <div class="hero-stat" data-reveal data-delay="2">
-      <div class="stat-num">
-        <span data-count="300" data-suffix="+">300+</span>
-      </div>
-      <div class="stat-desc">
-        <strong>Obsługiwanych firm</strong>
-        <span>Od JDG po spółki kapitałowe</span>
-      </div>
-    </div>
-    <div class="hero-stat" data-reveal data-delay="3">
-      <div class="stat-num">
-        <span data-count="100" data-suffix="%">100%</span>
-      </div>
-      <div class="stat-desc">
-        <strong>Terminowości</strong>
-        <span>Zero kar z US i ZUS</span>
+      <h1 class="hero-h1 fade-up" style="animation-delay:.1s">
+        Księgowość,<br/>
+        której możesz<br/>
+        <em>zaufać</em>
+      </h1>
+      <p class="hero-sub fade-up" style="animation-delay:.2s">
+        <span id="typingText"></span>
+      </p>
+      <div class="hero-btns fade-up" style="animation-delay:.3s">
+        <a href="#kontakt" class="btn-primary-hero btn-magnetic">
+          <span>Bezpłatna wycena →</span>
+        </a>
+        <a href="#uslugi" class="btn-secondary-hero btn-magnetic">Nasze usługi</a>
       </div>
     </div>
-    <div class="hero-stat" data-reveal data-delay="4">
-      <div class="stat-num">24h</div>
-      <div class="stat-desc">
-        <strong>Czas odpowiedzi</strong>
-        <span>Na każde Twoje pytanie</span>
+
+    <div class="hero-stats-panel fade-up" style="animation-delay:.4s">
+      <div class="hsp-header">
+        <div class="hsp-dot"></div>
+        <span class="hsp-label">Nasze biuro w liczbach</span>
+      </div>
+      <div class="hsp-grid">
+        <div class="hsp-stat">
+          <div class="hsp-num"><span data-count="15" data-suffix="+">15+</span></div>
+          <div class="hsp-desc"><strong>Lat doświadczenia</strong><span>Na rynku usług księgowych</span></div>
+        </div>
+        <div class="hsp-stat">
+          <div class="hsp-num"><span data-count="300" data-suffix="+">300+</span></div>
+          <div class="hsp-desc"><strong>Obsługiwanych firm</strong><span>Od JDG po spółki kapitałowe</span></div>
+        </div>
+        <div class="hsp-stat">
+          <div class="hsp-num"><span data-count="100" data-suffix="%">100%</span></div>
+          <div class="hsp-desc"><strong>Terminowości</strong><span>Zero kar z US i ZUS</span></div>
+        </div>
+        <div class="hsp-stat">
+          <div class="hsp-num">24h</div>
+          <div class="hsp-desc"><strong>Czas odpowiedzi</strong><span>Na każde Twoje pytanie</span></div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ TRUST BAR ═══ -->
+<!-- TRUST BAR -->
 <div id="trust">
   <div class="container">
     <div class="trust-inner">
-      <div class="trust-item" data-reveal><span class="trust-check">✓</span>Licencjonowani doradcy</div>
-      <div class="trust-item" data-reveal data-delay="1"><span class="trust-check">✓</span>Ubezpieczenie OC</div>
-      <div class="trust-item" data-reveal data-delay="2"><span class="trust-check">✓</span>Ochrona danych RODO</div>
-      <div class="trust-item" data-reveal data-delay="3"><span class="trust-check">✓</span>NIP: 967-145-10-13</div>
-      <div class="trust-item" data-reveal data-delay="4"><span class="trust-check">✓</span>KRS: 0000932902</div>
+      {[
+        ["✓","Licencjonowani doradcy"],
+        ["✓","Ubezpieczenie OC"],
+        ["✓","Ochrona danych RODO"],
+        ["✓","NIP: 967-145-10-13"],
+        ["✓","KRS: 0000932902"],
+      ].map(([check, label], i) => (
+        <div class="trust-item" data-reveal data-delay={i}>
+          <span class="trust-check">{check}</span>{label}
+        </div>
+      ))}
     </div>
   </div>
 </div>
 
-<!-- ═══ USŁUGI ═══ -->
+<!-- USŁUGI -->
 <section id="uslugi">
   <div class="container">
     <div class="section-head" data-reveal>
       <span class="section-label">Zakres usług</span>
-      <h2>Kompleksowa obsługa księgowa</h2>
-      <p>Przejmujemy pełną odpowiedzialność za Twoją rachunkowość, abyś mógł skupić się na prowadzeniu firmy.</p>
+      <h2>Kompleksowa obsługa<br/>księgowa dla firm</h2>
+      <p>Przejmujemy pełną odpowiedzialność za Twoją rachunkowość – abyś mógł skupić się na biznesie.</p>
     </div>
     <div class="services-grid">
-      <div class="service-item" data-reveal data-delay="1">
-        <div class="service-num">01</div>
-        <h3>Pełna księgowość</h3>
-        <p>Prowadzenie ksiąg rachunkowych, sprawozdania finansowe, bilanse roczne dla spółek i większych podmiotów.</p>
-      </div>
-      <div class="service-item" data-reveal data-delay="2">
-        <div class="service-num">02</div>
-        <h3>KPiR i ryczałt</h3>
-        <p>Uproszczona ewidencja podatkowa dla JDG i małych firm. Deklaracje PIT, roczne rozliczenia.</p>
-      </div>
-      <div class="service-item" data-reveal data-delay="3">
-        <div class="service-num">03</div>
-        <h3>Kadry i płace</h3>
-        <p>Listy płac, umowy, ZUS, PPK, e-PIT. Pełna obsługa kadrowo-płacowa bez Twojego zaangażowania.</p>
-      </div>
-      <div class="service-item" data-reveal data-delay="1">
-        <div class="service-num">04</div>
-        <h3>VAT i JPK</h3>
-        <p>Rozliczenia VAT, pliki JPK_V7, rejestracja VAT-UE, obsługa transakcji WNT i WDT.</p>
-      </div>
-      <div class="service-item" data-reveal data-delay="2">
-        <div class="service-num">05</div>
-        <h3>Doradztwo podatkowe</h3>
-        <p>Optymalizacja podatkowa, wybór formy opodatkowania, pomoc przy kontrolach skarbowych i ZUS.</p>
-      </div>
-      <div class="service-item" data-reveal data-delay="3">
-        <div class="service-num">06</div>
-        <h3>Zakładanie spółek</h3>
-        <p>Rejestracja spółek i działalności, wybór optymalnej formy prawnej, doradztwo na starcie biznesu.</p>
-      </div>
+      {[
+        ["01","Pełna księgowość","Prowadzenie ksiąg rachunkowych, sprawozdania finansowe, bilanse roczne dla spółek i większych podmiotów."],
+        ["02","KPiR i ryczałt","Uproszczona ewidencja podatkowa dla JDG. Deklaracje PIT, roczne rozliczenia podatkowe."],
+        ["03","Kadry i płace","Listy płac, umowy, ZUS, PPK, e-PIT. Pełna obsługa kadrowo-płacowa bez Twojego zaangażowania."],
+        ["04","VAT i JPK","Rozliczenia VAT, JPK_V7, rejestracja VAT-UE, obsługa transakcji wewnątrzwspólnotowych WNT/WDT."],
+        ["05","Doradztwo podatkowe","Optymalizacja podatkowa, wybór formy opodatkowania, pomoc przy kontrolach skarbowych i ZUS."],
+        ["06","Zakładanie spółek","Rejestracja spółek, wybór optymalnej formy prawnej, pełne doradztwo na starcie biznesu."],
+      ].map(([num, title, desc], i) => (
+        <div class="service-item" data-reveal data-delay={i % 3 + 1}>
+          <div class="service-num">{num}</div>
+          <h3>{title}</h3>
+          <p>{desc}</p>
+        </div>
+      ))}
     </div>
   </div>
 </section>
 
-<!-- ═══ OPINIE SLIDER ═══ -->
+<!-- OPINIE SLIDER -->
 <section id="opinie">
   <div class="container">
     <div class="section-head" data-reveal>
       <span class="section-label">Opinie klientów</span>
-      <h2 style="color:var(--white)">Co mówią o nas<br/>nasi klienci</h2>
+      <h2>Co mówią o nas<br/>nasi klienci</h2>
     </div>
-
     <div class="slider-wrapper" data-reveal data-delay="1">
       <div id="sliderTrack">
-
         <!-- Slide 1 -->
         <div class="testimonial-card">
-          <div class="testimonial-quote">
-            <span class="quote-mark">"</span>
-            <p>Współpracujemy z TAX od ponad 5 lat. W tym czasie nigdy nie mieliśmy żadnego problemu z terminowością ani z urzędami. Polecam każdej firmie, która chce mieć spokój w kwestii finansów.</p>
-            <div class="testimonial-author">
-              <div class="author-avatar">👨‍💼</div>
+          <div class="tquote-wrap">
+            <span class="tquote-mark">"</span>
+            <p class="tquote-text">Współpracujemy z TAX od ponad 5 lat. Nigdy nie mieliśmy żadnego problemu z terminowością ani z urzędami. Polecam każdej firmie, która chce mieć spokój w kwestii finansów.</p>
+            <div class="tauthor">
+              <div class="tauthor-av">👨‍💼</div>
               <div>
-                <div class="author-name">Marek Kowalski</div>
-                <div class="author-role">Prezes · Kowalski Logistyka Sp. z o.o.</div>
+                <div class="tauthor-name">Marek Kowalski</div>
+                <div class="tauthor-role">Prezes · Kowalski Logistyka Sp. z o.o.</div>
               </div>
             </div>
           </div>
-          <div class="testimonial-stats">
-            <div class="tstat">
-              <div class="tstat-num" data-count="5" data-suffix="lat">5lat</div>
-              <div class="tstat-label">Współpracy</div>
-            </div>
-            <div class="tstat">
-              <div class="tstat-num" data-count="0">0</div>
-              <div class="tstat-label">Błędów w rozliczeniach</div>
-            </div>
-            <div class="tstat">
-              <div class="tstat-num" data-count="100" data-suffix="%">100%</div>
-              <div class="tstat-label">Terminowości</div>
-            </div>
-            <div class="tstat">
-              <div class="tstat-num" data-count="24" data-suffix="h">24h</div>
-              <div class="tstat-label">Czas odpowiedzi</div>
-            </div>
+          <div class="tstats-grid">
+            <div class="tstat"><div class="tstat-num" data-count="5" data-suffix="lat">5lat</div><div class="tstat-label">Współpracy</div></div>
+            <div class="tstat"><div class="tstat-num" data-count="0">0</div><div class="tstat-label">Błędów w rozliczeniach</div></div>
+            <div class="tstat"><div class="tstat-num" data-count="100" data-suffix="%">100%</div><div class="tstat-label">Terminowości</div></div>
+            <div class="tstat"><div class="tstat-num" data-count="24" data-suffix="h">24h</div><div class="tstat-label">Czas odpowiedzi</div></div>
           </div>
         </div>
-
         <!-- Slide 2 -->
         <div class="testimonial-card">
-          <div class="testimonial-quote">
-            <span class="quote-mark">"</span>
-            <p>Przeszłam do TAX po złych doświadczeniach z poprzednim biurem. Różnica jest kolosalna – zawsze wiem co się dzieje w mojej firmie, dostaję jasne wyjaśnienia i czuję się bezpiecznie.</p>
-            <div class="testimonial-author">
-              <div class="author-avatar">👩‍💼</div>
+          <div class="tquote-wrap">
+            <span class="tquote-mark">"</span>
+            <p class="tquote-text">Przeszłam do TAX po złych doświadczeniach z poprzednim biurem. Różnica jest kolosalna – zawsze wiem co się dzieje w mojej firmie i czuję się całkowicie bezpiecznie.</p>
+            <div class="tauthor">
+              <div class="tauthor-av">👩‍💼</div>
               <div>
-                <div class="author-name">Anna Wiśniewska</div>
-                <div class="author-role">Właścicielka · Studio Urody Bydgoszcz</div>
+                <div class="tauthor-name">Anna Wiśniewska</div>
+                <div class="tauthor-role">Właścicielka · Studio Urody Bydgoszcz</div>
               </div>
             </div>
           </div>
-          <div class="testimonial-stats">
-            <div class="tstat">
-              <div class="tstat-num" data-count="3" data-suffix="lata">3lata</div>
-              <div class="tstat-label">Współpracy</div>
-            </div>
-            <div class="tstat">
-              <div class="tstat-num" data-count="40" data-suffix="%">40%</div>
-              <div class="tstat-label">Oszczędność na podatkach</div>
-            </div>
-            <div class="tstat">
-              <div class="tstat-num" data-count="12">12</div>
-              <div class="tstat-label">Pracowników w rozliczeniach</div>
-            </div>
-            <div class="tstat">
-              <div class="tstat-num" data-count="5" data-suffix="★">5★</div>
-              <div class="tstat-label">Ocena współpracy</div>
-            </div>
+          <div class="tstats-grid">
+            <div class="tstat"><div class="tstat-num" data-count="3" data-suffix="lata">3lata</div><div class="tstat-label">Współpracy</div></div>
+            <div class="tstat"><div class="tstat-num" data-count="40" data-suffix="%">40%</div><div class="tstat-label">Oszczędność na podatkach</div></div>
+            <div class="tstat"><div class="tstat-num" data-count="12">12</div><div class="tstat-label">Pracowników na listach płac</div></div>
+            <div class="tstat"><div class="tstat-num" data-count="5" data-suffix="★">5★</div><div class="tstat-label">Ocena współpracy</div></div>
           </div>
         </div>
-
         <!-- Slide 3 -->
         <div class="testimonial-card">
-          <div class="testimonial-quote">
-            <span class="quote-mark">"</span>
-            <p>Jako deweloper mam skomplikowane rozliczenia – VAT, koszty budowy, kilka spółek. TAX ogarnia to wszystko bez moich nerwów. Dedykowany opiekun zawsze jest dostępny i zna moją firmę na wylot.</p>
-            <div class="testimonial-author">
-              <div class="author-avatar">🏗️</div>
+          <div class="tquote-wrap">
+            <span class="tquote-mark">"</span>
+            <p class="tquote-text">Jako deweloper mam skomplikowane rozliczenia – kilka spółek, VAT, koszty budowy. TAX ogarnia to wszystko. Dedykowany opiekun zawsze dostępny i zna moją firmę na wylot.</p>
+            <div class="tauthor">
+              <div class="tauthor-av">🏗️</div>
               <div>
-                <div class="author-name">Tomasz Nowak</div>
-                <div class="author-role">CEO · Novum Development Sp. z o.o.</div>
+                <div class="tauthor-name">Tomasz Nowak</div>
+                <div class="tauthor-role">CEO · Novum Development Sp. z o.o.</div>
               </div>
             </div>
           </div>
-          <div class="testimonial-stats">
-            <div class="tstat">
-              <div class="tstat-num" data-count="7" data-suffix="lat">7lat</div>
-              <div class="tstat-label">Współpracy</div>
-            </div>
-            <div class="tstat">
-              <div class="tstat-num" data-count="3">3</div>
-              <div class="tstat-label">Obsługiwane spółki</div>
-            </div>
-            <div class="tstat">
-              <div class="tstat-num" data-count="0">0</div>
-              <div class="tstat-label">Kontroli zakończonych negatywnie</div>
-            </div>
-            <div class="tstat">
-              <div class="tstat-num" data-count="48" data-suffix="+">48+</div>
-              <div class="tstat-label">Pracowników na listach płac</div>
-            </div>
+          <div class="tstats-grid">
+            <div class="tstat"><div class="tstat-num" data-count="7" data-suffix="lat">7lat</div><div class="tstat-label">Współpracy</div></div>
+            <div class="tstat"><div class="tstat-num" data-count="3">3</div><div class="tstat-label">Obsługiwane spółki</div></div>
+            <div class="tstat"><div class="tstat-num" data-count="0">0</div><div class="tstat-label">Negatywnych kontroli</div></div>
+            <div class="tstat"><div class="tstat-num" data-count="48" data-suffix="+">48+</div><div class="tstat-label">Pracowników na listach płac</div></div>
           </div>
         </div>
-
       </div>
     </div>
-
     <div class="slider-controls" data-reveal data-delay="2">
-      <button class="slider-arrow" id="sliderPrev" aria-label="Poprzednia opinia">←</button>
+      <button class="slider-arrow" id="sliderPrev" aria-label="Poprzednia">←</button>
       <div class="slider-dots">
         <div class="slider-dot active"></div>
         <div class="slider-dot"></div>
         <div class="slider-dot"></div>
       </div>
-      <button class="slider-arrow" id="sliderNext" aria-label="Następna opinia">→</button>
+      <button class="slider-arrow" id="sliderNext" aria-label="Następna">→</button>
     </div>
   </div>
 </section>
 
-<!-- ═══ DLACZEGO MY ═══ -->
+<!-- DLACZEGO MY -->
 <section id="dlaczego">
   <div class="container">
     <div class="why-layout">
       <div>
         <span class="section-label" data-reveal>Dlaczego TAX</span>
         <h2 data-reveal data-delay="1">Twoje finanse<br/>w pewnych rękach</h2>
-        <div class="why-feature-list">
-          <div class="why-feature" data-reveal data-delay="1">
-            <div class="why-feature-icon">👤</div>
-            <div>
-              <h4>Dedykowany opiekun klienta</h4>
-              <p>Do każdego klienta przydzielamy jedną osobę, która zna Twoją firmę i zawsze jest do dyspozycji.</p>
+        <div class="why-list">
+          {[
+            ["👤","Dedykowany opiekun klienta","Do każdego klienta przydzielamy jedną osobę, która zna Twoją firmę i zawsze jest do dyspozycji.",1],
+            ["📅","Gwarantowana terminowość","Pilnujemy wszystkich terminów podatkowych i ZUS. Zero opóźnień, zero kar, zero stresu.",2],
+            ["💼","Pełna odpowiedzialność OC","Posiadamy ubezpieczenie OC. W razie błędu ponosimy pełną odpowiedzialność finansową.",3],
+            ["📲","Obsługa w 100% online","Dokumenty przez e-mail lub aplikację. Żadnych zbędnych wizyt w biurze.",4],
+            ["💰","Stała opłata, bez niespodzianek","Przejrzysty cennik, stała miesięczna kwota. Wiesz dokładnie ile płacisz i za co.",5],
+          ].map(([icon, title, desc, d]) => (
+            <div class="why-item" data-reveal data-delay={d}>
+              <div class="why-icon">{icon}</div>
+              <div><h4>{title}</h4><p>{desc}</p></div>
             </div>
-          </div>
-          <div class="why-feature" data-reveal data-delay="2">
-            <div class="why-feature-icon">📅</div>
-            <div>
-              <h4>Gwarantowana terminowość</h4>
-              <p>Pilnujemy wszystkich terminów podatkowych i ZUS. Zero opóźnień, zero kar, zero stresu.</p>
-            </div>
-          </div>
-          <div class="why-feature" data-reveal data-delay="3">
-            <div class="why-feature-icon">💼</div>
-            <div>
-              <h4>Pełna odpowiedzialność OC</h4>
-              <p>Posiadamy ubezpieczenie OC biura rachunkowego. W razie błędu ponosimy pełną odpowiedzialność.</p>
-            </div>
-          </div>
-          <div class="why-feature" data-reveal data-delay="4">
-            <div class="why-feature-icon">📲</div>
-            <div>
-              <h4>Obsługa w 100% online</h4>
-              <p>Dokumenty przez e-mail lub aplikację. Żadnych zbędnych wizyt w biurze.</p>
-            </div>
-          </div>
-          <div class="why-feature" data-reveal data-delay="5">
-            <div class="why-feature-icon">💰</div>
-            <div>
-              <h4>Stała opłata, bez niespodzianek</h4>
-              <p>Przejrzysty cennik, stała miesięczna kwota. Wiesz dokładnie ile płacisz i za co.</p>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
       <div class="why-right" data-reveal="right">
-        <div class="why-card">
-          <div class="why-card-num">
-            <span data-count="15" data-suffix="+">15+</span>
-          </div>
+        <div class="why-big-card">
+          <div class="why-big-num"><span data-count="15" data-suffix="+">15+</span></div>
           <p>lat świadczenia usług księgowych dla firm z Bydgoszczy i całej Polski</p>
         </div>
         <div class="why-mini">
           <div class="why-mini-icon">🏆</div>
-          <div>
-            <strong>Zaufało nam ponad 300 firm</strong>
-            <span>Od JDG po spółki kapitałowe</span>
-          </div>
+          <div><strong>Zaufało nam ponad 300 firm</strong><span>Od JDG po spółki kapitałowe</span></div>
         </div>
-        <div class="why-mini" style="margin-top:0.75rem">
+        <div class="why-mini">
           <div class="why-mini-icon">🔒</div>
-          <div>
-            <strong>Bezpieczeństwo Twoich danych</strong>
-            <span>Certyfikowane systemy, pełna zgodność z RODO</span>
-          </div>
+          <div><strong>Bezpieczeństwo Twoich danych</strong><span>Certyfikowane systemy, pełna zgodność z RODO</span></div>
+        </div>
+        <div class="why-mini">
+          <div class="why-mini-icon">⚡</div>
+          <div><strong>Odpowiedź w 24 godziny</strong><span>Na każde pytanie dotyczące Twojej firmy</span></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ CENNIK ═══ -->
+<!-- CENNIK -->
 <section id="cennik">
   <div class="container">
     <div class="section-head" data-reveal>
       <span class="section-label">Cennik</span>
       <h2>Przejrzyste ceny,<br/>bez ukrytych kosztów</h2>
-      <p>Stała miesięczna opłata niezależnie od liczby operacji.</p>
+      <p>Stała miesięczna opłata – wiesz za co płacisz.</p>
     </div>
     <div class="pricing-grid">
       <div class="pricing-card" data-reveal data-delay="1">
@@ -363,7 +266,7 @@ const posts = allPosts
         <div class="plan-desc">Jednoosobowa działalność</div>
         <div class="plan-price">
           <span class="price-from">od</span>
-          <span class="price-amount">299</span>
+          <span class="price-amt">299</span>
           <span class="price-period">zł / mies.</span>
         </div>
         <ul class="plan-features">
@@ -373,7 +276,7 @@ const posts = allPosts
           <li>Deklaracje ZUS i US</li>
           <li>Kontakt e-mail i telefoniczny</li>
         </ul>
-        <a href="#kontakt" class="btn-navy">Wybierz plan</a>
+        <a href="#kontakt" class="btn-plan">Wybierz plan</a>
       </div>
       <div class="pricing-card featured" data-reveal data-delay="2">
         <div class="plan-badge">Najpopularniejszy</div>
@@ -381,7 +284,7 @@ const posts = allPosts
         <div class="plan-desc">Rozwijające się firmy</div>
         <div class="plan-price">
           <span class="price-from">od</span>
-          <span class="price-amount">699</span>
+          <span class="price-amt">699</span>
           <span class="price-period">zł / mies.</span>
         </div>
         <ul class="plan-features">
@@ -392,13 +295,13 @@ const posts = allPosts
           <li>Dedykowany opiekun klienta</li>
           <li>Priorytetowy kontakt 24h</li>
         </ul>
-        <a href="#kontakt" class="btn-gold">Wybierz plan</a>
+        <a href="#kontakt" class="btn-plan-gold">Wybierz plan</a>
       </div>
       <div class="pricing-card" data-reveal data-delay="3">
         <div class="plan-name">Enterprise</div>
         <div class="plan-desc">Duże podmioty i spółki</div>
         <div class="plan-price">
-          <span class="price-amount" style="font-size:1.5rem;line-height:1.3">Wycena<br/>indywidualna</span>
+          <span class="price-amt" style="font-size:1.5rem;line-height:1.3">Wycena<br/>indywidualna</span>
         </div>
         <ul class="plan-features">
           <li>Pełna księgowość (KSR / MSSF)</li>
@@ -408,13 +311,13 @@ const posts = allPosts
           <li>Obsługa kontroli skarbowych</li>
           <li>Raportowanie zarządcze</li>
         </ul>
-        <a href="#kontakt" class="btn-navy">Zapytaj o wycenę</a>
+        <a href="#kontakt" class="btn-plan">Zapytaj o wycenę</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ BLOG ═══ -->
+<!-- BLOG -->
 {posts.length > 0 && (
 <section id="blog">
   <div class="container">
@@ -429,7 +332,7 @@ const posts = allPosts
           <div class="blog-card-img">
             {post.frontmatter.image
               ? <img src={post.frontmatter.image} alt={post.frontmatter.imageAlt || post.frontmatter.title} width="400" height="225" loading="lazy" />
-              : <span class="blog-card-placeholder">§</span>
+              : <span class="blog-placeholder">§</span>
             }
           </div>
           <div class="blog-card-body">
@@ -445,63 +348,44 @@ const posts = allPosts
       ))}
     </div>
     <div style="text-align:center;margin-top:2.5rem" data-reveal>
-      <a href="/blog" class="btn-navy" style="display:inline-flex;width:auto;padding:0.8rem 2rem">Wszystkie artykuły →</a>
+      <a href="/blog" class="btn-ghost" style="display:inline-flex;padding:.85rem 2rem">Wszystkie artykuły →</a>
     </div>
   </div>
 </section>
 )}
 
-<!-- ═══ KONTAKT ═══ -->
+<!-- KONTAKT -->
 <section id="kontakt">
   <div class="container">
     <div class="contact-layout">
       <div data-reveal="left">
         <span class="section-label">Kontakt</span>
         <h2>Porozmawiajmy<br/>o Twojej firmie</h2>
-        <p style="color:var(--ink-mid);margin-top:0.75rem;font-size:0.95rem;line-height:1.8">
-          Pierwsza konsultacja jest bezpłatna. Opisz swoją sytuację, odezwiemy się w ciągu 24 godzin.
+        <p style="color:rgba(255,255,255,.45);margin-top:.75rem;font-size:.95rem;line-height:1.85">
+          Pierwsza konsultacja jest bezpłatna i niezobowiązująca.<br/>Odezwiemy się w ciągu 24 godzin.
         </p>
-        <div class="contact-info-card">
+        <div class="contact-info-box">
           <h3>Dane kontaktowe</h3>
-          <div class="contact-detail">
-            <div class="contact-detail-icon">📞</div>
-            <div>
-              <div class="cd-label">Telefon</div>
-              <div class="cd-value"><a href="tel:+48723522852">723 522 852</a></div>
-            </div>
+          <div class="contact-item">
+            <div class="ci-icon">📞</div>
+            <div><div class="ci-label">Telefon</div><div class="ci-value"><a href="tel:+48723522852">723 522 852</a></div></div>
           </div>
-          <div class="contact-detail">
-            <div class="contact-detail-icon">✉️</div>
-            <div>
-              <div class="cd-label">E-mail</div>
-              <div class="cd-value"><a href="mailto:biuro@tax-bydgoszcz.pl">biuro@tax-bydgoszcz.pl</a></div>
-            </div>
+          <div class="contact-item">
+            <div class="ci-icon">✉️</div>
+            <div><div class="ci-label">E-mail</div><div class="ci-value"><a href="mailto:biuro@tax-bydgoszcz.pl">biuro@tax-bydgoszcz.pl</a></div></div>
           </div>
-          <div class="contact-detail">
-            <div class="contact-detail-icon">📍</div>
-            <div>
-              <div class="cd-label">Adres</div>
-              <div class="cd-value">Ludwikowo 7/206<br/>85-502 Bydgoszcz</div>
-            </div>
+          <div class="contact-item">
+            <div class="ci-icon">📍</div>
+            <div><div class="ci-label">Adres</div><div class="ci-value">Ludwikowo 7/206<br/>85-502 Bydgoszcz</div></div>
           </div>
-          <div class="contact-detail">
-            <div class="contact-detail-icon">🕐</div>
-            <div>
-              <div class="cd-label">Godziny pracy</div>
-              <div class="cd-value">Pon–Pt: 8:00–17:00</div>
-            </div>
+          <div class="contact-item">
+            <div class="ci-icon">🕐</div>
+            <div><div class="ci-label">Godziny pracy</div><div class="ci-value">Pon–Pt: 8:00–17:00</div></div>
           </div>
         </div>
       </div>
       <div data-reveal="right">
-        <form
-          class="contact-form"
-          name="kontakt"
-          method="POST"
-          data-netlify="true"
-          netlify-honeypot="bot-field"
-          action="/dziekujemy"
-        >
+        <form class="contact-form" name="kontakt" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/dziekujemy">
           <input type="hidden" name="form-name" value="kontakt" />
           <p style="display:none"><label>Nie wypełniaj: <input name="bot-field" /></label></p>
           <div class="form-row">
@@ -540,8 +424,8 @@ const posts = allPosts
             <label for="wiadomosc">Wiadomość *</label>
             <textarea id="wiadomosc" name="wiadomosc" required placeholder="Opisz krótko swoją firmę i czego potrzebujesz..."></textarea>
           </div>
-          <button type="submit" class="btn-primary btn-magnetic" style="align-self:flex-start;border:none;cursor:pointer;font-family:var(--font-body)">
-            Wyślij zapytanie →
+          <button type="submit" class="btn-submit btn-magnetic">
+            <span>Wyślij zapytanie →</span>
           </button>
         </form>
       </div>
@@ -550,5 +434,4 @@ const posts = allPosts
 </section>
 
 <script src="/scripts/effects.js" defer></script>
-
 </BaseLayout>
