@@ -1,0 +1,91 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import '../../styles/global.css';
+
+export async function getStaticPaths() {
+  const posts = await Astro.glob('../../content/blog/*.md');
+  return posts.map((post) => ({
+    params: { slug: post.file.split('/').pop()?.replace('.md', '') },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { title, description, date, category, readTime, image, imageAlt } = post.frontmatter;
+const { Content } = post;
+---
+<BaseLayout
+  title={`${title} | TAX Biuro Rachunkowe`}
+  description={description || post.frontmatter.excerpt}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": title,
+      "description": post.frontmatter.excerpt,
+      "datePublished": date,
+      "dateModified": date,
+      "author": {
+        "@type": "Organization",
+        "name": "TAX Biuro Rachunkowe"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "TAX Biuro Rachunkowe",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://tax-bydgoszcz.pl/images/logo.png"
+        }
+      },
+      "image": image ? `https://tax-bydgoszcz.pl${image}` : undefined,
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": Astro.url.href
+      }
+    })} />
+  </Fragment>
+
+  <div style="padding-top:5rem">
+    <header class="post-header">
+      <div class="container">
+        <a href="/blog" style="font-size:0.8rem;color:var(--gold);letter-spacing:0.1em;text-transform:uppercase">
+          ← Blog
+        </a>
+        <div style="margin-top:1.5rem">
+          <span class="blog-tag">{category || 'Podatki'}</span>
+        </div>
+        <h1 style="font-family:var(--font-display);font-size:clamp(2rem,5vw,3.5rem);color:var(--white);margin-top:0.75rem;max-width:800px">
+          {title}
+        </h1>
+        <div class="post-meta">
+          <span>{new Date(date).toLocaleDateString('pl-PL', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+          <span>{readTime || '5 min czytania'}</span>
+        </div>
+      </div>
+    </header>
+
+    {image && (
+      <div style="max-width:860px;margin:2rem auto;padding:0 1.5rem">
+        <img
+          src={image}
+          alt={imageAlt || title}
+          width="860"
+          height="484"
+          loading="eager"
+          style="border-radius:4px;width:100%;height:auto"
+        />
+      </div>
+    )}
+
+    <div class="container">
+      <div class="post-body">
+        <Content />
+      </div>
+      <div style="border-top:1px solid var(--border);padding-top:3rem;margin-top:3rem">
+        <p style="font-size:0.85rem;color:rgba(255,255,255,0.4)">Masz pytania? Skontaktuj się z nami.</p>
+        <a href="/#kontakt" class="btn btn-primary" style="margin-top:1rem">Bezpłatna konsultacja →</a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

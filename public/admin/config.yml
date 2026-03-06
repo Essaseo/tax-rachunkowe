@@ -1,0 +1,93 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# Cloudflare Pages + Netlify Identity (lub Cloudflare Access)
+publish_mode: editorial_workflow
+media_folder: "public/images/blog"
+public_folder: "/images/blog"
+locale: pl
+
+collections:
+  # ══════════════════════════════════
+  # BLOG POSTS
+  # ══════════════════════════════════
+  - name: "blog"
+    label: "📝 Wpisy blogowe"
+    label_singular: "Wpis"
+    folder: "src/content/blog"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    preview_path: "blog/{{slug}}"
+    fields:
+      - label: "Tytuł artykułu"
+        name: "title"
+        widget: "string"
+        hint: "Optymalnie 50–60 znaków dla SEO"
+      - label: "Skrót (excerpt)"
+        name: "excerpt"
+        widget: "text"
+        hint: "Opis wyświetlany na liście blogów i w meta description. Optymalnie 120–160 znaków."
+      - label: "Data publikacji"
+        name: "date"
+        widget: "datetime"
+        format: "YYYY-MM-DD"
+        date_format: "DD.MM.YYYY"
+        time_format: false
+        default: ""
+      - label: "Kategoria"
+        name: "category"
+        widget: "select"
+        options:
+          - { label: "Podatki", value: "Podatki" }
+          - { label: "VAT", value: "VAT" }
+          - { label: "Kadry i płace", value: "Kadry i płace" }
+          - { label: "Doradztwo", value: "Doradztwo" }
+          - { label: "Zmiany w prawie", value: "Zmiany w prawie" }
+          - { label: "Aktualności", value: "Aktualności" }
+        default: "Podatki"
+      - label: "Czas czytania"
+        name: "readTime"
+        widget: "string"
+        default: "5 min czytania"
+        required: false
+      - label: "Zdjęcie główne"
+        name: "image"
+        widget: "image"
+        required: false
+        hint: "Zalecane: 1200×630 px, format JPG lub WebP"
+      - label: "Tekst alternatywny zdjęcia (alt)"
+        name: "imageAlt"
+        widget: "string"
+        required: false
+        hint: "Opis zdjęcia dla Google i czytników ekranu"
+      - label: "Treść artykułu"
+        name: "body"
+        widget: "markdown"
+        hint: "Pisz w Markdown. Używaj nagłówków H2 (##) i H3 (###)."
+
+  # ══════════════════════════════════
+  # STRONA GŁÓWNA – DANE KONTAKTOWE
+  # ══════════════════════════════════
+  - name: "settings"
+    label: "⚙️ Ustawienia strony"
+    files:
+      - label: "Dane kontaktowe"
+        name: "contact"
+        file: "src/content/settings/contact.json"
+        fields:
+          - { label: "Telefon", name: "phone", widget: "string" }
+          - { label: "E-mail", name: "email", widget: "string" }
+          - { label: "Adres", name: "address", widget: "string" }
+          - { label: "Godziny otwarcia", name: "hours", widget: "string" }
+          - { label: "NIP", name: "nip", widget: "string" }
+      - label: "Hero – tekst główny"
+        name: "hero"
+        file: "src/content/settings/hero.json"
+        fields:
+          - { label: "Nagłówek H1 (linia 1)", name: "line1", widget: "string" }
+          - { label: "Nagłówek H1 (linia 2 – złota)", name: "line2", widget: "string" }
+          - { label: "Podtytuł", name: "subtitle", widget: "text" }
+          - { label: "Liczba lat doświadczenia", name: "years", widget: "string" }
+          - { label: "Liczba klientów", name: "clients", widget: "string" }

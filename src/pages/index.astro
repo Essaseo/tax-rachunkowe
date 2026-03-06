@@ -1,0 +1,347 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/global.css';
+
+// Load blog posts (last 3)
+const allPosts = await Astro.glob('../content/blog/*.md');
+const posts = allPosts
+  .sort((a, b) => new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf())
+  .slice(0, 3);
+---
+<BaseLayout
+  title="TAX Biuro Rachunkowe | Księgowość dla firm – Bydgoszcz"
+  description="TAX Biuro Rachunkowe – profesjonalna obsługa księgowa, kadry i płace, doradztwo podatkowe. Kompleksowe usługi dla firm. Sprawdź ofertę i cennik."
+>
+
+  <!-- ═══ HERO ═══ -->
+  <section id="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-grid" aria-hidden="true"></div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-eyebrow fade-up">
+          <span>Biuro Rachunkowe · Bydgoszcz</span>
+        </div>
+        <h1 class="fade-up delay-1">
+          Twoje finanse<br/>
+          w <em>pewnych rękach</em>
+        </h1>
+        <p class="fade-up delay-2">
+          Kompleksowa obsługa księgowa dla firm każdej wielkości.
+          Zajmujemy się podatkami, abyś Ty mógł skupić się na tym, co ważne – prowadzeniu biznesu.
+        </p>
+        <div class="hero-actions fade-up delay-3">
+          <a href="#kontakt" class="btn btn-primary">Bezpłatna wycena →</a>
+          <a href="#uslugi" class="btn btn-outline">Nasze usługi</a>
+        </div>
+        <div class="hero-stats fade-up delay-4">
+          <div class="stat-item">
+            <div class="stat-num">15+</div>
+            <div class="stat-label">lat doświadczenia</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">320+</div>
+            <div class="stat-label">obsługiwanych firm</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">100%</div>
+            <div class="stat-label">terminowości</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ USŁUGI ═══ -->
+  <section id="uslugi" aria-labelledby="uslugi-heading">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-label">Co robimy</span>
+        <div class="gold-line"></div>
+        <h2 id="uslugi-heading">Kompleksowe usługi<br/>księgowe</h2>
+      </div>
+      <div class="services-grid">
+        <div class="service-item">
+          <span class="service-icon" aria-hidden="true">📒</span>
+          <h3>Pełna księgowość</h3>
+          <p>Prowadzenie ksiąg rachunkowych, sprawozdania finansowe, bilanse roczne. Dla sp. z o.o., S.A. i innych podmiotów zobowiązanych do pełnej rachunkowości.</p>
+        </div>
+        <div class="service-item">
+          <span class="service-icon" aria-hidden="true">📋</span>
+          <h3>KPiR i ryczałt</h3>
+          <p>Uproszczona ewidencja podatkowa dla jednoosobowych działalności i małych firm. Szybko, rzetelnie, zgodnie z przepisami.</p>
+        </div>
+        <div class="service-item">
+          <span class="service-icon" aria-hidden="true">👥</span>
+          <h3>Kadry i płace</h3>
+          <p>Obsługa kadrowo-płacowa: listy płac, umowy o pracę, ZUS, PPK, e-PIT dla pracowników. Pełna obsługa RODO kadrowego.</p>
+        </div>
+        <div class="service-item">
+          <span class="service-icon" aria-hidden="true">🧾</span>
+          <h3>VAT i JPK</h3>
+          <p>Rozliczenia VAT, przygotowanie i wysyłka plików JPK_V7, rejestracja do VAT-UE, obsługa transakcji wewnątrzwspólnotowych.</p>
+        </div>
+        <div class="service-item">
+          <span class="service-icon" aria-hidden="true">💡</span>
+          <h3>Doradztwo podatkowe</h3>
+          <p>Optymalizacja podatkowa, wybór formy opodatkowania, pomoc przy kontrolach skarbowych. Działamy prewencyjnie, nie reaktywnie.</p>
+        </div>
+        <div class="service-item">
+          <span class="service-icon" aria-hidden="true">🏢</span>
+          <h3>Rejestracja firm</h3>
+          <p>Pomoc w rejestracji działalności gospodarczej i spółek, wybór optymalnej formy prawnej, doradztwo na starcie biznesu.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ DLACZEGO MY ═══ -->
+  <section id="dlaczego" aria-labelledby="dlaczego-heading">
+    <div class="container">
+      <div class="why-grid">
+        <div>
+          <span class="section-label">Dlaczego TAX</span>
+          <div class="gold-line"></div>
+          <h2 id="dlaczego-heading">Doświadczenie,<br/>któremu możesz ufać</h2>
+          <ul class="why-list">
+            <li class="why-item">
+              <span class="why-num">01</span>
+              <div class="why-text">
+                <h4>Stały opiekun klienta</h4>
+                <p>Do każdego klienta przydzielamy dedykowanego księgowego, który zna Twoją firmę na wylot.</p>
+              </div>
+            </li>
+            <li class="why-item">
+              <span class="why-num">02</span>
+              <div class="why-text">
+                <h4>Terminowość gwarantowana</h4>
+                <p>Żadnych spóźnień, żadnych kar z ZUS czy US. Pilnujemy wszystkich terminów za Ciebie.</p>
+              </div>
+            </li>
+            <li class="why-item">
+              <span class="why-num">03</span>
+              <div class="why-text">
+                <h4>Stałe ceny, bez niespodzianek</h4>
+                <p>Przejrzysty cennik, stała miesięczna opłata. Wiesz dokładnie, ile płacisz i za co.</p>
+              </div>
+            </li>
+            <li class="why-item">
+              <span class="why-num">04</span>
+              <div class="why-text">
+                <h4>Pełna cyfryzacja</h4>
+                <p>Dokumenty przez e-mail lub aplikację. Żadnych zbędnych wizyt w biurze, jeśli nie chcesz.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="why-visual">
+          <div class="why-card-main">
+            <div class="big-num">15+</div>
+            <p>lat na rynku<br/>usług księgowych</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CENNIK ═══ -->
+  <section id="cennik" aria-labelledby="cennik-heading">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-label">Cennik</span>
+        <div class="gold-line"></div>
+        <h2 id="cennik-heading">Przejrzyste ceny,<br/>bez ukrytych kosztów</h2>
+      </div>
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <div class="plan-name">Start</div>
+          <div class="plan-desc">Dla jednoosobowych działalności</div>
+          <div class="plan-price">
+            <span class="currency">od</span>
+            <span class="amount">299</span>
+            <span class="period">zł / mies.</span>
+          </div>
+          <ul class="plan-features">
+            <li>KPiR lub ryczałt</li>
+            <li>Rozliczenia VAT (JPK)</li>
+            <li>Do 50 dokumentów / mies.</li>
+            <li>Deklaracje ZUS</li>
+            <li>E-mail i telefon</li>
+          </ul>
+          <a href="#kontakt" class="btn btn-outline" style="width:100%;justify-content:center">Wybierz plan</a>
+        </div>
+        <div class="pricing-card featured">
+          <div class="plan-name">Biznes</div>
+          <div class="plan-desc">Dla rozwijających się firm</div>
+          <div class="plan-price">
+            <span class="currency">od</span>
+            <span class="amount">699</span>
+            <span class="period">zł / mies.</span>
+          </div>
+          <ul class="plan-features">
+            <li>Pełna księgowość lub KPiR</li>
+            <li>VAT, JPK, deklaracje CIT/PIT</li>
+            <li>Do 200 dokumentów / mies.</li>
+            <li>Kadry i płace (do 10 os.)</li>
+            <li>Dedykowany opiekun</li>
+            <li>Priorytetowy kontakt</li>
+          </ul>
+          <a href="#kontakt" class="btn btn-primary" style="width:100%;justify-content:center">Wybierz plan</a>
+        </div>
+        <div class="pricing-card">
+          <div class="plan-name">Enterprise</div>
+          <div class="plan-desc">Dla dużych podmiotów</div>
+          <div class="plan-price">
+            <span class="amount" style="font-size:2rem;line-height:1.2">Wycena<br/>indywidualna</span>
+          </div>
+          <ul class="plan-features">
+            <li>Pełna księgowość (KSR / MSSF)</li>
+            <li>Sprawozdania finansowe</li>
+            <li>Kadry i płace bez limitu</li>
+            <li>Doradztwo podatkowe</li>
+            <li>Obsługa kontroli skarbowych</li>
+            <li>Raportowanie zarządcze</li>
+          </ul>
+          <a href="#kontakt" class="btn btn-outline" style="width:100%;justify-content:center">Zapytaj o wycenę</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ BLOG ═══ -->
+  {posts.length > 0 && (
+  <section id="blog" aria-labelledby="blog-heading">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-label">Wiedza</span>
+        <div class="gold-line"></div>
+        <h2 id="blog-heading">Blog podatkowy</h2>
+      </div>
+      <div class="blog-grid">
+        {posts.map((post) => (
+          <article class="blog-card">
+            <div class="blog-card-img" aria-hidden="true">
+              {post.frontmatter.image
+                ? <img src={post.frontmatter.image} alt={post.frontmatter.imageAlt || post.frontmatter.title} width="400" height="225" loading="lazy" />
+                : <span>📊</span>
+              }
+            </div>
+            <div class="blog-card-body">
+              <span class="blog-tag">{post.frontmatter.category || 'Podatki'}</span>
+              <h3><a href={post.url || '#'}>{post.frontmatter.title}</a></h3>
+              <p>{post.frontmatter.excerpt}</p>
+              <div class="blog-meta">
+                <span>{new Date(post.frontmatter.date).toLocaleDateString('pl-PL')}</span>
+                <span>{post.frontmatter.readTime || '5 min czytania'}</span>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+      <div style="text-align:center;margin-top:3rem">
+        <a href="/blog" class="btn btn-outline">Wszystkie artykuły →</a>
+      </div>
+    </div>
+  </section>
+  )}
+
+  <!-- ═══ KONTAKT ═══ -->
+  <section id="kontakt" aria-labelledby="kontakt-heading">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <span class="section-label">Kontakt</span>
+          <div class="gold-line"></div>
+          <h2 id="kontakt-heading">Porozmawiajmy<br/>o Twojej firmie</h2>
+          <p>Pierwsza konsultacja jest bezpłatna. Opisz swoją sytuację, a my odezwiemy się w ciągu 24 godzin z wyceną.</p>
+          <div class="contact-details">
+            <div class="contact-item">
+              <div class="contact-item-icon" aria-hidden="true">📞</div>
+              <div class="contact-item-text">
+                <div class="label">Telefon</div>
+                <div class="value"><a href="tel:+48XXXXXXXXX">+48 XX XXX XX XX</a></div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-item-icon" aria-hidden="true">✉️</div>
+              <div class="contact-item-text">
+                <div class="label">E-mail</div>
+                <div class="value"><a href="mailto:biuro@tax-bydgoszcz.pl">biuro@tax-bydgoszcz.pl</a></div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-item-icon" aria-hidden="true">📍</div>
+              <div class="contact-item-text">
+                <div class="label">Adres</div>
+                <div class="value">ul. Przykładowa 1, 85-001 Bydgoszcz</div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-item-icon" aria-hidden="true">🕐</div>
+              <div class="contact-item-text">
+                <div class="label">Godziny</div>
+                <div class="value">Pon–Pt: 8:00–17:00</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <form
+            class="contact-form"
+            name="kontakt"
+            method="POST"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+            action="/dziekujemy"
+            aria-label="Formularz kontaktowy"
+          >
+            <input type="hidden" name="form-name" value="kontakt" />
+            <p style="display:none">
+              <label>Nie wypełniaj: <input name="bot-field" /></label>
+            </p>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="imie">Imię i nazwisko *</label>
+                <input type="text" id="imie" name="imie" required autocomplete="name" placeholder="Jan Kowalski" />
+              </div>
+              <div class="form-group">
+                <label for="firma">Nazwa firmy</label>
+                <input type="text" id="firma" name="firma" autocomplete="organization" placeholder="Kowalski Sp. z o.o." />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">E-mail *</label>
+                <input type="email" id="email" name="email" required autocomplete="email" placeholder="jan@firma.pl" />
+              </div>
+              <div class="form-group">
+                <label for="telefon">Telefon</label>
+                <input type="tel" id="telefon" name="telefon" autocomplete="tel" placeholder="+48 600 000 000" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="usluga">Rodzaj usługi</label>
+              <select id="usluga" name="usluga">
+                <option value="">– Wybierz –</option>
+                <option>Pełna księgowość</option>
+                <option>KPiR / Ryczałt</option>
+                <option>Kadry i płace</option>
+                <option>Doradztwo podatkowe</option>
+                <option>Rejestracja firmy</option>
+                <option>Inne</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="wiadomosc">Wiadomość *</label>
+              <textarea id="wiadomosc" name="wiadomosc" required placeholder="Opisz krótko swoją firmę i czego potrzebujesz..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="align-self:flex-start;padding:1rem 2.5rem">
+              Wyślij zapytanie →
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

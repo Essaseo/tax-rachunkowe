@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+
+Sitemap: https://tax-bydgoszcz.pl/sitemap-index.xml

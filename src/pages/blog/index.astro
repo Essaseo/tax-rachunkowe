@@ -1,0 +1,48 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import '../../styles/global.css';
+
+const allPosts = await Astro.glob('../../content/blog/*.md');
+const posts = allPosts
+  .sort((a, b) => new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf());
+---
+<BaseLayout
+  title="Blog podatkowy | TAX Biuro Rachunkowe"
+  description="Aktualności podatkowe, porady księgowe, zmiany w prawie. Blog TAX Biuro Rachunkowe – wiedza, która pomaga prowadzić biznes."
+>
+  <div style="padding-top:6rem">
+    <section>
+      <div class="container">
+        <span class="section-label">Wiedza i aktualności</span>
+        <div class="gold-line"></div>
+        <h1 style="font-family:var(--font-display);font-size:clamp(2rem,5vw,3.5rem);color:var(--white);margin-bottom:3rem">
+          Blog podatkowy
+        </h1>
+        {posts.length === 0 && (
+          <p style="color:rgba(255,255,255,0.4)">Wkrótce pojawią się pierwsze artykuły.</p>
+        )}
+        <div class="blog-grid">
+          {posts.map((post) => (
+            <article class="blog-card">
+              <div class="blog-card-img" aria-hidden="true">
+                {post.frontmatter.image
+                  ? <img src={post.frontmatter.image} alt={post.frontmatter.imageAlt || post.frontmatter.title} width="400" height="225" loading="lazy" />
+                  : <span>📊</span>
+                }
+              </div>
+              <div class="blog-card-body">
+                <span class="blog-tag">{post.frontmatter.category || 'Podatki'}</span>
+                <h2 style="font-size:1.15rem"><a href={post.url || '#'}>{post.frontmatter.title}</a></h2>
+                <p>{post.frontmatter.excerpt}</p>
+                <div class="blog-meta">
+                  <span>{new Date(post.frontmatter.date).toLocaleDateString('pl-PL')}</span>
+                  <span>{post.frontmatter.readTime || '5 min czytania'}</span>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
