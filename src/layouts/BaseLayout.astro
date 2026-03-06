@@ -80,6 +80,12 @@ const siteName = 'TAX Biuro Rachunkowe';
     "sameAs": []
   })} />
 
+  <!-- GSAP + ScrollTrigger + Lenis (CDN) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
+  <script src="https://unpkg.com/split-type@0.3.4/umd/index.min.js"></script>
+
   <slot name="head" />
 </head>
 <body>
@@ -89,7 +95,7 @@ const siteName = 'TAX Biuro Rachunkowe';
     <div class="container">
       <nav class="nav-inner" aria-label="Nawigacja główna">
         <a href="/" class="nav-logo" aria-label="TAX Biuro Rachunkowe – strona główna">
-          <img src="/images/logo.png" alt="TAX Biuro Rachunkowe logo" width="160" height="48" loading="eager" />
+          <img src="/images/logo.png" alt="TAX Biuro Rachunkowe logo" width="160" height="48" loading="eager" style="filter: none;" />
         </a>
         <ul class="nav-links" role="list">
           <li><a href="/#uslugi">Usługi</a></li>
@@ -161,34 +167,6 @@ const siteName = 'TAX Biuro Rachunkowe';
     </div>
   </footer>
 
-  <script>
-    // ── Sticky header
-    const header = document.getElementById('header');
-    window.addEventListener('scroll', () => {
-      header?.classList.toggle('scrolled', window.scrollY > 40);
-    }, { passive: true });
 
-    // ── Mobile menu
-    const menuBtn = document.getElementById('menuBtn');
-    const closeBtn = document.getElementById('closeBtn');
-    const mobileNav = document.getElementById('mobileNav');
-
-    menuBtn?.addEventListener('click', () => {
-      mobileNav?.classList.add('open');
-      menuBtn.setAttribute('aria-expanded', 'true');
-      mobileNav?.removeAttribute('aria-hidden');
-      document.body.style.overflow = 'hidden';
-    });
-
-    const closeMenu = () => {
-      mobileNav?.classList.remove('open');
-      menuBtn?.setAttribute('aria-expanded', 'false');
-      mobileNav?.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
-    };
-
-    closeBtn?.addEventListener('click', closeMenu);
-    mobileNav?.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
-  </script>
 </body>
 </html>
